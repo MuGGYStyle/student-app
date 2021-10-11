@@ -1,0 +1,33 @@
+<div class="container p-5 my-5">
+  <div class="card">
+    <div class="card-header">
+      Courses
+      <%= link_to '+', new_course_path, class: 'btn btn-outline-success' %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Credit</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courses.each do |course| %>
+          <tr>
+            <th scope="row"><%= course.id %></th>
+            <td><%= course.name %></td>
+            <td><%= course.credit %></td>
+            <td>
+              <%= link_to 'Edit', edit_course_path(course) %>
+              <%= link_to 'Delete', course_path(course), method: :delete %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

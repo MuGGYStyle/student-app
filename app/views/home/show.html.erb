@@ -1,0 +1,40 @@
+<div class="container p-5 my-5">
+  <div class="card">
+    <div class="card-header">
+      Student Transcript list
+      <%= link_to '+', new_home_path, class: 'btn btn-outline-success' %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Course Credit</th>
+            <th scope="col">Grade Point</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @student_courses.each do |sc| %>
+          <tr>
+            <th scope="row"><%= sc.id %></th>
+            <td><%= sc.student.first_name %></td>
+            <td><%= sc.course.name %></td>
+            <td><%= sc.course.credit %></td>
+            <td><%= sc.grade_point %></td>
+            <td>
+              <%= link_to 'Edit', edit_home_path(sc) %>
+              <%= link_to 'Delete', home_path(sc), method: :delete %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <%= link_to '<- Return Student Transcript list', { controller: 'home', action: 'index' }, class: 'btn btn-link' %>
+    </div>
+  </div>
+</div>
